@@ -27,7 +27,7 @@ function Detail() {
             <button
                 className={styles.backBtn}
                 onClick={() => {
-                    navigate(-1);
+                    navigate("/");
                 }}>
                 &larr; Back
             </button>

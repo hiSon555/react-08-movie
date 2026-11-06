@@ -1,7 +1,7 @@
 .form {
     display: flex;
     gap: 10px;
-    width : 300px;
+    width: 300px;
     align-items: center;
     margin-bottom: 70px;
 }
@@ -20,10 +20,11 @@
 .btn {
     padding: 12px 12px;
     border: none;
-    background-color: #FF0000;
+    background-color: #ff0000;
     color: white;
     border-radius: 8px;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .btn:hover {

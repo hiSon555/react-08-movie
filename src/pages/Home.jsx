@@ -5,7 +5,7 @@ function Home() {
 
     return (
         <div className={styles.container}>
-            <span className={styles.title}>영화 검색</span>
+            <span className={styles.title}>Movie Search</span>
             <SearchBar keyword={""} />
         </div>
 );
