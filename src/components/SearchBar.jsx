@@ -1,6 +1,26 @@
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import styles from "./SearchBar.module.css";
+import styled from "styled-components";
+
+const Form = styled.form`
+    display: flex;
+    gap: 10px;
+`;
+
+const Input = styled.input`
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+`;
+
+const Button = styled.button`
+padding: 12px;
+background-color: #ff5959;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+`;
 
 function SearchBar({ keyword }) {
     const navigate = useNavigate();
@@ -16,10 +36,10 @@ function SearchBar({ keyword }) {
     };
 
     return (
-        <form onSubmit={onSubmitHandler} className={styles.form}>
-            <input onChange={onChangeHandler} value={input} className={styles.input} />
-            <button className={styles.btn}>Search</button>
-        </form>
+        <Form onSubmit={onSubmitHandler}>
+            <Input onChange={onChangeHandler} value={input} />
+            <Button>Search</Button>
+        </Form>
     );
 }
 

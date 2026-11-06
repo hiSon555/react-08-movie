@@ -1,6 +1,27 @@
 import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import styles from "./Detail.module.css";
+import { Container } from "./Home.jsx";
+import styled from "styled-components";
+
+const BackBtn = styled.button`
+display: block;
+margin-bottom: 20px;
+background: none;
+border: none;
+color: #ff5959;
+font-size: 16px;
+cursor: pointer;
+padding: 0;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+`;
+
+const Plot = styled.p`
+line-height: 1.6;
+    margin-top: 20px;
+`
 
 function Detail() {
     const navigate = useNavigate();
@@ -23,31 +44,30 @@ function Detail() {
     }
 
     return (
-        <div className={styles.container}>
-            <button
-                className={styles.backBtn}
+        <Container>
+            <BackBtn
                 onClick={() => {
                     navigate("/");
                 }}>
                 &larr; Back
-            </button>
+            </BackBtn>
             <div>
-                <img className={styles.img} src={movie.Poster} alt={movie.Title} />
+                <img src={movie.Poster} alt={movie.Title} />
             </div>
-            <div className={styles.description}>
+            <div>
                 <h1>{movie.Title}</h1>
                 <div>
-                    <span className={styles.bold}>Year:</span> {movie.Year}
+                    <span>Year:</span> {movie.Year}
                 </div>
                 <div>
-                    <span className={styles.bold}>Genre:</span> {movie.Genre}
+                    <span></span> {movie.Genre}
                 </div>
                 <div>
-                    <span className={styles.bold}>Director:</span> {movie.Director}
+                    <span></span> {movie.Director}
                 </div>
             </div>
-            <p dangerouslySetInnerHTML={{ __html: movie.Plot }}></p>
-        </div>
+            <Plot dangerouslySetInnerHTML={{ __html: movie.Plot }}></Plot>
+        </Container>
     );
 }
 
