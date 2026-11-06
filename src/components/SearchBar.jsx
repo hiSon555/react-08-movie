@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import styles from "./SearchBar.module.css";
 
 function SearchBar({ keyword }) {
     const navigate = useNavigate();
@@ -15,9 +16,9 @@ function SearchBar({ keyword }) {
     };
 
     return (
-        <form onSubmit={onSubmitHandler}>
-            <input onChange={onChangeHandler} value={input} />
-            <button>검색</button>
+        <form onSubmit={onSubmitHandler} className={styles.form}>
+            <input onChange={onChangeHandler} value={input} className={styles.input} />
+            <button className={styles.btn}>Search</button>
         </form>
     );
 }
