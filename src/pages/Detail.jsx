@@ -4,24 +4,25 @@ import { Container } from "./Home.jsx";
 import styled from "styled-components";
 
 const BackBtn = styled.button`
-display: block;
-margin-bottom: 20px;
-background: none;
-border: none;
-color: #ff5959;
-font-size: 16px;
-cursor: pointer;
-padding: 0;
-    
+    display: block;
+    text-align: start;
+    margin-bottom: 20px;
+    background: none;
+    border: none;
+    color: #ff5959;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+
     &:hover {
         text-decoration: underline;
     }
 `;
 
 const Plot = styled.p`
-line-height: 1.6;
+    line-height: 1.6;
     margin-top: 20px;
-`
+`;
 
 function Detail() {
     const navigate = useNavigate();
@@ -47,7 +48,7 @@ function Detail() {
         <Container>
             <BackBtn
                 onClick={() => {
-                    navigate("/");
+                    navigate(-1);
                 }}>
                 &larr; Back
             </BackBtn>
