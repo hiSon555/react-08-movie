@@ -48,6 +48,7 @@ function Search() {
 
         // 초기화를 해줘야 화면에 이전의 화면값이 안 남음
         // fetch가 실행되지 않으니까ㅏ까까ㅏㅏ
+        // eslint-disable-next-line
         setList([]);
         setError("");
 
