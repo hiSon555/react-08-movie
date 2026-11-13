@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { type ChangeEvent, type SubmitEvent, useState } from "react";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -22,13 +22,14 @@ border-radius: 8px;
 cursor: pointer;
 `;
 
-function SearchBar({ keyword }) {
+function SearchBar({ keyword } : { keyword: string }) {
     const navigate = useNavigate();
     const [input, setInput] = useState(keyword);
 
-    const onChangeHandler = e => setInput(e.target.value);
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement, HTMLInputElement>) =>
+        setInput(e.target.value);
 
-    const onSubmitHandler = e => {
+    const onSubmitHandler = (e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
         const k = input.trim();
         if (!k) return;

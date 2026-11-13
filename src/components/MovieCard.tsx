@@ -23,7 +23,16 @@ const StyledLink = styled(Link)`
     }
 `;
 
-function MovieCard({ movie }) {
+type Props = {
+    movie: {
+        imdbID : string;
+        Title : string;
+        Poster : string;
+        Year : string;
+    };
+};
+
+function MovieCard({ movie } : Props) {
     return <StyledLink to={`/detail/${movie.imdbID}`}>
     {movie.Poster ? (
         <img src={movie.Poster} alt={movie.Title} />

@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { Container } from "./Home.jsx";
+import { Container } from "./Home.tsx";
 import styled from "styled-components";
 
 const BackBtn = styled.button`
@@ -24,20 +24,37 @@ const Plot = styled.p`
     margin-top: 20px;
 `;
 
+type MovieInfo = {
+    Title: string;
+    Year: string;
+    Genre: string;
+    Director: string;
+    Plot: string;
+    Poster: string;
+}
+
+
 function Detail() {
     const navigate = useNavigate();
 
     const { imdbID } = useParams();
+    // URL 경로에 값이 없는 undefined를 고려하여
+    // 리턴 처리
+    if (!imdbID) return;
 
-    const [movie, setMovie] = useState(null);
+    const [movie, setMovie] = useState<MovieInfo | null>(null);
 
     useEffect(() => {
         fetch(`https://www.omdbapi.com/?apikey=6a0a8eb4&i=${imdbID}&plot=full`).then(res =>
             res
                 .json()
-                .then(json => setMovie(json))
-                .catch(err => console.log(err)),
-        );
+                .then((json: MovieInfo) => setMovie(json))
+                .catch((err: unknown) => {
+                    if (err instanceof Error) {
+                        console.log(err.message)
+                    }
+                }
+        ))
     }, [imdbID]);
 
     if (!movie) {

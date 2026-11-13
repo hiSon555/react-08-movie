@@ -1,4 +1,4 @@
-import SearchBar from "../components/SearchBar.jsx";
+import SearchBar from "../components/SearchBar.tsx";
 import styled from "styled-components";
 
 // eslint-disable-next-line
