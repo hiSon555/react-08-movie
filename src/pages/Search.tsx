@@ -67,9 +67,11 @@ function Search() {
         fetch(`https://www.omdbapi.com/?apikey=6a0a8eb4&s=${encodeURIComponent(keyword)}`)
             .then(res => res.json())
             .then((json:MList) => setList(json.Search))
-            .catch(err => {
-                console.log(err); // 개발자가 개발자 도구에서 에러 분석 내용을 보기 위해서 하는 것
-                setError("검색 오류");
+            .catch((err: unknown) => {
+                if (err instanceof Error) {
+                    console.log("알 수 없는 에러 + " + err.message)
+                }
+                // 개발자가 개발자 도구에서 에러 분석 내용을 보기 위해서 하는 것
             })
             .finally(() => setLoading(false));
     }, [keyword]);
